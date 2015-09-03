@@ -53,4 +53,6 @@ Apache License, Version 2.0
 Author Information
 ------------------
 
-Major Hayden <major@mhtx.net>
+Patrik Uytterhoeven <patrik at open-future.be>
+based on the work of <https://github.com/major/cis-rhel-ansible>
+

@@ -1,0 +1,88 @@
+---
+- name: 1.4.1 Ensure SELinux is not disabled in /etc/grub.conf (Scored)
+  lineinfile: >
+    state=absent
+    dest=/etc/grub.conf
+    line="selinux=0"
+  when: ansible_distribution_major_version == '6'
+  tags:
+    - scored
+    - section1.4
+    - section1.4.1
+
+- name: 1.4.1 Ensure SELinux is not disabled in /etc/grub.conf (Scored)
+  lineinfile: >
+    state=absent
+    dest=/etc/grub.conf
+    line="enforcing=0"
+  when: ansible_distribution_major_version == '6'
+  tags:
+    - scored
+    - section1.4
+    - section1.4.1
+
+- name: 1.4.1 Ensure SELinux is not disabled in /boot/grub2/grub.cfg (Scored)
+  lineinfile: >
+    state=absent
+    dest=/boot/grub2/grub.cfg
+    line="selinux=0"
+  when: ansible_distribution_major_version == '7'
+  tags:
+    - scored
+    - section1.4
+    - section1.4.1
+
+- name: 1.4.1 Ensure SELinux is not disabled in /boot/grub2/grub.cfg (Scored)
+  lineinfile: >
+    state=absent
+    dest=/boot/grub2/grub.cfg
+    line="enforcing=0"
+  when: ansible_distribution_major_version == '7'
+  tags:
+    - scored
+    - section1.4
+    - section1.4.1
+
+- name: 1.4.2 Set the SELinux State (Scored)
+  yum: >
+    name=selinux-policy-targeted
+    state=present
+  tags:
+    - scored
+    - section1.4
+    - section1.4.2
+
+- name: 1.4.3 Set the SELinux Policy (Scored)
+  selinux: >
+    state=enforcing
+    policy=targeted
+  ignore_errors: yes
+  tags:
+    - scored
+    - section1.4
+    - section1.4.3
+
+- name: 1.4.4 Remove SETroubleshoot (Scored)
+  yum: >
+    name=setroubleshoot
+    state=absent
+  tags:
+    - scored
+    - section1.4
+    - section1.4.4
+
+- name: 1.4.5 Remove MCS Translation Service (mcstrans) (Scored)
+  yum: >
+    name=mcstrans
+    state=absent
+  tags:
+    - scored
+    - section1.4
+    - section1.4.5
+
+- name: 1.4.6 Check for unconfined daemons (Scored)
+  shell: ps -eZ | egrep "initrc" | egrep -vw "tr|ps|egrep|bash|awk" | tr ':' ' ' | awk '{print $NF }'
+  tags:
+    - scored
+    - section1.4
+    - section1.4.6

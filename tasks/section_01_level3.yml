@@ -1,0 +1,56 @@
+---
+- name: 1.3.1 Install AIDE (Scored)
+  yum: >
+    name=aide
+    state=present
+  when: configure_aide
+  tags:
+    - scored
+    - section1.3
+    - section1.3.1
+
+- name: 1.3.1 Install AIDE (Initialize AIDE) (Scored)
+  command: >
+    /usr/sbin/aide --init -B 'database_out=file:/var/lib/aide/aide.db.gz'
+    creates=/var/lib/aide/aide.db.gz
+  when: configure_aide
+  tags:
+    - scored
+    - section1.3
+    - section1.3.1
+
+- name: 1.3.1 Install AIDE (check is prelink installed) (Scored)
+  stat: path=/usr/sbin/prelink
+  register: prelink_stat
+  tags:
+    - scored
+    - section1.3
+    - section1.3.1
+
+- name: 1.3.1 Install AIDE (Disable Prelinking) (Scored)
+  lineinfile: >
+    state=present
+    dest=/etc/sysconfig/prelink
+    regexp=^PRELINKING=
+    line=PRELINKING=no
+    create=yes
+  when:
+    - configure_aide
+    - prelink_stat.stat.exists
+  tags:
+    - scored
+    - section1.3
+    - section1.3.1
+
+- name: 1.3.2 Implement Periodic Execution of File Integrity (Scored)
+  cron: >
+    name="Run AIDE (CIS 1.3.2)"
+    minute="0"
+    hour="5"
+    job="/usr/sbin/aide --check"
+  when: configure_aide
+  tags:
+    - scored
+    - section1.3
+    - section1.3.2
+

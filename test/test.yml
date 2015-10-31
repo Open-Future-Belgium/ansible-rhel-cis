@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  vars:
+
+  roles:
+    - { role: ansible-rhel-cis }

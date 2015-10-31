@@ -9,12 +9,14 @@ This role can be used to audit or remediate a host against the Center for Intern
 *reason it was split is because this role keeps everything under roles so it
 breaks with ansible-galaxy and makes it more difficult to keep separate repo's
 per role*
+*Roles have been fixed to work for centos & rhel 6/7*
+*Tests have been added with kitchen*
 
 Requirements
 ------------
 
 This role has no requirements or dependencies.
-This role runs on rhel 6 / 7
+This role runs on rhel-centos 6 / 7
 
 Role Variables
 --------------
@@ -27,6 +29,11 @@ Dependencies
 Some sensible defaults are configured and documented within defaults/main.yml.  These defaults are set so they would cause minimal disruption to a production system.  However, it's *your* responsibility to verify that the default configuration will not harm your production server.  *Always* run the role in check mode if you're unsure of its effects.
 
 Be aware that some of the default variables are set against CIS recommendations in the hopes that they will cause minimal disruption to a system.
+
+Kitchen Testing
+---------------
+Installing kitchen : gem install kitchen
+Run Tests: kitchen setup all
 
 Example Playbook
 ----------------

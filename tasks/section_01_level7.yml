@@ -1,8 +1,8 @@
 ---
-  - name: 1.7 Use the Latest OS Release (Not Scored)
-    command: >
-      cat /etc/redhat-release
-    when: ansible_distribution == "RedHat"
-    tags:
-      - notscored
-      - section1.7
+- name: 1.7 Use the Latest OS Release (Not Scored)
+  command: >
+    cat /etc/redhat-release
+  when: ansible_distribution == "RedHat"
+  tags:
+    - notscored
+    - section1.7

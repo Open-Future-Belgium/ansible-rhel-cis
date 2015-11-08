@@ -21,7 +21,7 @@
     - section3.2
 
 - name: 3.2 Remove X Windows (multi-user.target) (scored)
-  command: systemctl set-default multiuser.target
+  command: systemctl set-default multi-user.target
   when: ansible_distribution_major_version == '7'
   tags:
     - scored

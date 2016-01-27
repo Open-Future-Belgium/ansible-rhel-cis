@@ -28,27 +28,25 @@
     - section3.2
 
 - name: 3.2 Remove X Windows (remove package group) (Scored)
-  yum: >
+  yum:
     name=xorg-x11-server-common
     state=absent
   tags:
     - scored
     - section3.2
 
-- name: 3.3 Disable Avahi Server (disable service) (Scored)
-  service: >
-    name=avahi-daemon
-    state=stopped
-    enabled=no
+- name: 3.3 Disable Avahi Server (remove service) (scored)
+  yum:
+    name=avahi
+    state=absent
   tags:
     - scored
     - section3.3
 
-- name: 3.4 Disable Print Server - CUPS (Not Scored)
-  service: >
+- name: 3.4 Disable Print Server - CUPS (remove service) (Not Scored)
+  yum:
     name=cups
-    state=stopped
-    enabled=no
+    state=absent
   tags:
     - notscored
     - section3.4

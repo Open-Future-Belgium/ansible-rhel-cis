@@ -1,11 +1,24 @@
 ---
   - name: 4.1.1 Disable IP Forwarding (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.ip_forward
       value=0
       state=present
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.1
+      - section4.1.1
+
+  - name: 4.1.1 Disable IP Forwarding (Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.ip_forward
+      value=0
+      state=present
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.1
@@ -13,12 +26,12 @@
 
   - name: 4.1.2 Disable Send Packet Redirects (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.conf.all.send_redirects
       value=0
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
     tags:
       - scored
       - section4.1
@@ -26,12 +39,40 @@
 
   - name: 4.1.2 Disable Send Packet Redirects (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.all.send_redirects
+      value=0
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
+    tags:
+      - scored
+      - section4.1
+      - section4.1.2
+
+  - name: 4.1.2 Disable Send Packet Redirects (Scored)
+    sysctl:
       name=net.ipv4.conf.default.send_redirects
       value=0
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.1
+      - section4.1.2
+
+  - name: 4.1.2 Disable Send Packet Redirects (Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.default.send_redirects
+      value=0
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.1
@@ -39,12 +80,12 @@
 
   - name: 4.2.1 Disable Source Routed Packet Acceptance (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.conf.all.accept_source_route
       value=0
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
     tags:
       - scored
       - section4.2
@@ -52,12 +93,40 @@
 
   - name: 4.2.1 Disable Source Routed Packet Acceptance (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.all.accept_source_route
+      value=0
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.1
+
+  - name: 4.2.1 Disable Source Routed Packet Acceptance (Scored)
+    sysctl:
       name=net.ipv4.conf.default.accept_source_route
       value=0
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.1
+
+  - name: 4.2.1 Disable Source Routed Packet Acceptance (Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.default.accept_source_route
+      value=0
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.2
@@ -65,12 +134,12 @@
 
   - name: 4.2.2 Disable ICMP Redirect Acceptance (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.conf.all.accept_redirects
       value=0
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
     tags:
       - scored
       - section4.2
@@ -78,12 +147,40 @@
 
   - name: 4.2.2 Disable ICMP Redirect Acceptance (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.all.accept_redirects
+      value=0
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.2
+
+  - name: 4.2.2 Disable ICMP Redirect Acceptance (Scored)
+    sysctl:
       name=net.ipv4.conf.default.accept_redirects
       value=0
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.2
+
+  - name: 4.2.2 Disable ICMP Redirect Acceptance (Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.default.accept_redirects
+      value=0
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.2
@@ -91,12 +188,12 @@
 
   - name: 4.2.3 Disable Secure ICMP Redirect Acceptance
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.conf.all.secure_redirects
       value=0
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
     tags:
       - scored
       - section4.2
@@ -104,12 +201,40 @@
 
   - name: 4.2.3 Disable Secure ICMP Redirect Acceptance
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.all.secure_redirects
+      value=0
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.3
+
+  - name: 4.2.3 Disable Secure ICMP Redirect Acceptance
+    sysctl:
       name=net.ipv4.conf.default.secure_redirects
       value=0
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.3
+
+  - name: 4.2.3 Disable Secure ICMP Redirect Acceptance
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.default.secure_redirects
+      value=0
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.2
@@ -117,12 +242,12 @@
 
   - name: 4.2.4 Log Suspicious Packets (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.conf.all.log_martians
       value=1
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
     tags:
       - scored
       - section4.2
@@ -130,12 +255,40 @@
 
   - name: 4.2.4 Log Suspicious Packets (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.all.log_martians
+      value=1
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.4
+
+  - name: 4.2.4 Log Suspicious Packets (Scored)
+    sysctl:
       name=net.ipv4.conf.default.log_martians
       value=1
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.4
+
+  - name: 4.2.4 Log Suspicious Packets (Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.default.log_martians
+      value=1
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.2
@@ -143,12 +296,26 @@
 
   - name: 4.2.5 Enable Ignore Broadcast Requests (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.icmp_echo_ignore_broadcasts
       value=1
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.5
+
+  - name: 4.2.5 Enable Ignore Broadcast Requests (Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.icmp_echo_ignore_broadcasts
+      value=1
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.2
@@ -156,12 +323,26 @@
 
   - name: 4.2.6 Enable Bad Error Message Protection (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.icmp_ignore_bogus_error_responses
       value=1
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.6
+
+  - name: 4.2.6 Enable Bad Error Message Protection (Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.icmp_ignore_bogus_error_responses
+      value=1
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.2
@@ -169,12 +350,12 @@
 
   - name: 4.2.7 Enable RFC-recommended Source Route Validation (scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.conf.all.rp_filter
       value=1
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
     tags:
       - scored
       - section4.2
@@ -182,12 +363,40 @@
 
   - name: 4.2.7 Enable RFC-recommended Source Route Validation (scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.all.rp_filter
+      value=1
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.7
+
+  - name: 4.2.7 Enable RFC-recommended Source Route Validation (scored)
+    sysctl:
       name=net.ipv4.conf.default.rp_filter
       value=1
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.7
+
+  - name: 4.2.7 Enable RFC-recommended Source Route Validation (scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.conf.default.rp_filter
+      value=1
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.2
@@ -195,19 +404,33 @@
 
   - name: 4.2.8 Enable TCP SYN Cookies (Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv4.tcp_syncookies
       value=1
       state=present
       ignoreerrors=true
       reload=yes
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - scored
+      - section4.2
+      - section4.2.8
+
+  - name: 4.2.8 Enable TCP SYN Cookies (Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv4.tcp_syncookies
+      value=1
+      state=present
+      ignoreerrors=true
+      reload=yes
+    when: ansible_distribution_major_version == '7'
     tags:
       - scored
       - section4.2
       - section4.2.8
 
   - name: 4.3 Wireless Networking (Not Scored)
-    debug: msg" rm all wireless network scripts if not needed. Check with iw list"
+    debug: msg" remove all wireless network scripts if not needed. Check with iw list"
     tags:
       - notscored
       - section4.3
@@ -215,11 +438,11 @@
 
   - name: 4.4.1.1 Disable IPv6 Router Advertisements (Not Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
       name=net.ipv6.conf.all.accept_ra
       value=0
       state=present
       ignoreerrors=true
+    when: ansible_distribution_major_version == '6'
     tags:
       - notscored
       - section4.4
@@ -228,11 +451,39 @@
 
   - name: 4.4.1.1 Disable IPv6 Router Advertisements (Not Scored)
     sysctl:
-#      sysctl_file=/etc/sysctl.d/10-cis.conf
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv6.conf.all.accept_ra
+      value=0
+      state=present
+      ignoreerrors=true
+    when: ansible_distribution_major_version == '7'
+    tags:
+      - notscored
+      - section4.4
+      - section4.4.1
+      - section4.4.1.1
+
+  - name: 4.4.1.1 Disable IPv6 Router Advertisements (Not Scored)
+    sysctl:
       name=net.ipv6.conf.default.accept_ra
       value=0
       state=present
       ignoreerrors=true
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - notscored
+      - section4.4
+      - section4.4.1
+      - section4.4.1.1
+
+  - name: 4.4.1.1 Disable IPv6 Router Advertisements (Not Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv6.conf.default.accept_ra
+      value=0
+      state=present
+      ignoreerrors=true
+    when: ansible_distribution_major_version == '7'
     tags:
       - notscored
       - section4.4
@@ -245,6 +496,21 @@
       value=0
       state=present
       ignoreerrors=true
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - notscored
+      - section4.4
+      - section4.4.1
+      - section4.4.1.2
+
+  - name: 4.4.1.2 Disable IPv6 Redirect Acceptance (Not Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv6.conf.all.accept_redirects
+      value=0
+      state=present
+      ignoreerrors=true
+    when: ansible_distribution_major_version == '7'
     tags:
       - notscored
       - section4.4
@@ -257,6 +523,21 @@
       value=0
       state=present
       ignoreerrors=true
+    when: ansible_distribution_major_version == '6'
+    tags:
+      - notscored
+      - section4.4
+      - section4.4.1
+      - section4.4.1.2
+
+  - name: 4.4.1.2 Disable IPv6 Redirect Acceptance (Not Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv6.conf.default.accept_redirects
+      value=0
+      state=present
+      ignoreerrors=true
+    when: ansible_distribution_major_version == '7'
     tags:
       - notscored
       - section4.4
@@ -269,11 +550,12 @@
       dest=/etc/sysconfig/network
       regexp=^NETWORKING_IPV6
       line=NETWORKING_IPV6=no
-    when: disable_ipv6
+    when: disable_ipv6 and ansible_distribution_major_version == '6'
     tags:
       - notscored
       - section4.4
       - section4.4.2
+
 
   - name: 4.4.2 Disable IPv6 (disable in network config) (Not Scored)
     lineinfile:
@@ -281,7 +563,7 @@
       dest=/etc/sysconfig/network
       regexp=^IPV6INIT
       line=IPV6INIT=no
-    when: disable_ipv6
+    when: disable_ipv6 and ansible_distribution_major_version == '6'
     tags:
       - notscored
       - section4.4
@@ -293,7 +575,7 @@
       create=yes
       dest=/etc/modprobe.d/ipv6.conf
       line="options ipv6 disable=1"
-    when: disable_ipv6
+    when: disable_ipv6 and ansible_distribution_major_version == '6'
     tags:
       - notscored
       - section4.4
@@ -304,7 +586,7 @@
       name=ip6tables
       enabled=no
       state=stopped
-    when: disable_ipv6
+    when: disable_ipv6 and ansible_distribution_major_version == '6'
     tags:
       - notscored
       - section4.4
@@ -313,7 +595,20 @@
   - name: 4.4.2 Disable IPv6 (flush routes) (Not Scored)
     command: /sbin/sysctl -w net.ipv6.route.flush=1
     ignore_errors: yes
-    when: disable_ipv6
+    when: disable_ipv6 and ansible_distribution_major_version == '6'
+    tags:
+      - notscored
+      - section4.4
+      - section4.4.2
+
+  - name: 4.4.2 Disable IPv6 RHEL 7(Not Scored)
+    sysctl:
+      sysctl_file=/etc/sysctl.d/10-cis.conf
+      name=net.ipv6.conf.all.disable_ipv6
+      value=1
+      state=present
+      ignoreerrors=true
+    when: ansible_distribution_major_version == '7'
     tags:
       - notscored
       - section4.4

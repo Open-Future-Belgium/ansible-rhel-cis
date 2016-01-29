@@ -25,7 +25,7 @@ platforms:
       ansible_yum_repo: "http://mirror.logol.ru/epel/6/x86_64/epel-release-6-8.noarch.rpm"
 
 suites:
-  - name: default
+  - name: default-centos
     provisioner:
       attributes:
         extra_vars:

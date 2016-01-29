@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   vars:
+    - disable_ipv6: yes
 
   roles:
     - { role: ansible-rhel-cis }

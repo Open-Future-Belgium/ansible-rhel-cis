@@ -608,7 +608,7 @@
       value=1
       state=present
       ignoreerrors=true
-    when: ansible_distribution_major_version == '7'
+    when: disable_ipv6 and ansible_distribution_major_version == '7'
     tags:
       - notscored
       - section4.4
@@ -713,7 +713,7 @@
       name=iptables
       enabled=yes
       state=started
-    when: enable_iptables
+    when: enable_iptables and ansible_distribution_major_version == '6'
     tags:
       - scored
       - section4.7
@@ -724,8 +724,25 @@
       enabled=yes
       state=started
     ignore_errors: yes
-    when: enable_ip6tables
+    when: enable_ip6tables and ansible_distribution_major_version == '6'
     tags:
       - notscored
       - section4.8
 
+  - name: 4.7 Make Sure Firewalld is installed
+    yum:
+      name=firewalld
+      state=present
+    tags:
+      - scored
+      - section4.7
+
+  - name: 4.7 Enable IPtables Centos/Rhel 7(Scored)
+    service: >
+      name=firewalld
+      enabled=yes
+      state=started
+    when: enable_iptables and ansible_distribution_major_version == '7'
+    tags:
+      - scored
+      - section4.7

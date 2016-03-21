@@ -6,3 +6,6 @@
 
   - name: Reload sshd
     service: name=sshd state=restarted
+
+  - name: Reload rsyslog
+    service: name=rsyslog state=restarted

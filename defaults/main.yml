@@ -46,7 +46,7 @@ lock_inactive: no
 # Specifie which IP Addresses are permitted to connect to the host.
 # If nothing is specified All:All will be used
 # Ex: 192.168.1.0/255.255.255.0"
-tcp_allow: []
+# tcp_allow: []
 
 # Enable iptables (CIS 4.7)
 # You should check to see that your current iptables configuration in

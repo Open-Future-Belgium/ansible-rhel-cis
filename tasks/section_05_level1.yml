@@ -233,7 +233,7 @@
 # This will add an extra line if someone can make better regexp i would be happy
   - name: 5.2.3 Enable Auditing for Processes That Start Prior to auditd (Scored)
     lineinfile:
-      state=present
+      state: present
       dest: /etc/default/grub
       line: 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX audit=1"'
     tags:

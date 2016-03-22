@@ -738,7 +738,7 @@
       - scored
       - section4.7
 
-  - name: 4.7 Enable IPtables Centos/Rhel 7(Scored)
+  - name: 4.7 Enable and start Firewalld on Centos/Rhel 7(Scored)
     service: >
       name=firewalld
       enabled=yes
